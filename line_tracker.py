@@ -19,21 +19,26 @@ def preprocess_image(frame):
     #Preprocess the input frame
     #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame = cv2.resize(frame, (640, 640))  # Adjust the size as needed
-    frame = frame.astype(np.float32)
+    frame = frame.astype(np.uint8)
     frame = np.transpose(frame, (2, 0, 1))
     frame = np.expand_dims(frame, axis=0)
     return frame
 
 def main():
-    onnx_model_path = 'yolox_m_ti_lite_45p5_64p2.onnx'
+    onnx_model_path = 'od-8220_onnxrt_coco_edgeai-mmdet_yolox_s_lite_640x640_20220221_model_onnx\model\yolox_s_lite_640x640_20220221_model.onnx'
     frame_width, frame_height = 640,640
     image_area = frame_width * frame_height
     # Load the YOLOX ONNX model
     yolox_model = load_model(onnx_model_path)
 
-     # Open the webcam
+    # Open the webcam
     #cap = cv2.VideoCapture(1,cv2.CAP_DSHOW)
-    cap = cv2.VideoCapture(0)
+    #cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+
+    #Load the video
+    video_path = 'G:\Projects\Human_Counter_using_Supervision\palace.mp4'
+    cap = cv2.VideoCapture(video_path)
+
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
     cap.set(cv2.CAP_PROP_FPS, 60)

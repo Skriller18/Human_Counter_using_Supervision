@@ -22,13 +22,13 @@ def preprocess_image(frame):
     # Preprocess the input frame
     #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame = cv2.resize(frame, (640, 640)) # Adjust the size as needed
-    frame = frame.astype(np.float32)
+    frame = frame.astype(np.unit8)
     frame = np.transpose(frame, (2, 0, 1))
     frame = np.expand_dims(frame, axis=0)
     return frame
 
 def main():
-    onnx_model_path = 'yolox_m_ti_lite_45p5_64p2.onnx'
+    onnx_model_path = 'od-8220_onnxrt_coco_edgeai-mmdet_yolox_s_lite_640x640_20220221_model_onnx\model\yolox_s_lite_640x640_20220221_model.onnx'
     frame_width, frame_height = 640,640
     image_area = frame_width * frame_height
 

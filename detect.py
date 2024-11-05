@@ -25,12 +25,12 @@ def preprocess_image(frame):
     return frame
 
 def main():
-    onnx_model_path = 'od-8230_onnxrt_coco_edgeai-mmdet_yolox_m_lite_20220228_model_onnx/model/yolox_m_lite_20220228_model.onnx'
+    onnx_model_path = 'od-8220_onnxrt_coco_edgeai-mmdet_yolox_s_lite_640x640_20220221_model_onnx\model\yolox_s_lite_640x640_20220221_model.onnx'
     frame_width, frame_height = 640,640
     # Load the YOLOX ONNX model
     yolox_model = load_model(onnx_model_path)
      # Open the webcam
-    cap = cv2.VideoCapture("/dev/video0")
+    cap = cv2.VideoCapture(1)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
 
