@@ -1,7 +1,7 @@
 import onnxruntime
 import cv2
 import numpy as np
-#from supervision.annotators import core
+from supervision.annotators import core as sv
 import supervision as sv
 from supervision import Point
 import time
@@ -25,7 +25,7 @@ def preprocess_image(frame):
     return frame
 
 def main():
-    onnx_model_path = 'od-8220_onnxrt_coco_edgeai-mmdet_yolox_s_lite_640x640_20220221_model_onnx\model\yolox_s_lite_640x640_20220221_model.onnx'
+    onnx_model_path = 'od-8220_onnxrt_coco_edgeai-mmdet_yolox_s_lite_640x640_20220221_model_onnx/model/yolox_s_lite_640x640_20220221_model.onnx'
     frame_width, frame_height = 640,640
     image_area = frame_width * frame_height
     # Load the YOLOX ONNX model
@@ -36,7 +36,7 @@ def main():
     #cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 
     #Load the video
-    video_path = 'G:\Projects\Human_Counter_using_Supervision\palace.mp4'
+    video_path = 'palace.mp4'
     cap = cv2.VideoCapture(video_path)
 
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
